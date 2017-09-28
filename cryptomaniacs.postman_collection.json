@@ -39,6 +39,17 @@
 			"response": []
 		},
 		{
+			"name": "http://localhost:8080/api/user/abe",
+			"request": {
+				"url": "http://localhost:8080/api/user/abe",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "http://localhost:8080/api/user/abe/wallet",
 			"request": {
 				"url": "http://localhost:8080/api/user/abe/wallet",
@@ -50,9 +61,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/api/user/username1/wallet",
+			"name": "http://localhost:8080/api/wallet/user/abe",
 			"request": {
-				"url": "http://localhost:8080/api/user/username1/wallet",
+				"url": "http://localhost:8080/api/wallet/user/abe",
 				"method": "POST",
 				"header": [
 					{
@@ -63,8 +74,19 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"address\":\"def\",\n\t\"type\": \"ETHEREUM\"\n}"
+					"raw": "{\n\t\"data\":\"eyJ2ZXJzaW9uIjozLCJpZCI6IjJjOWUyNzFiLTM1OGYtNDY5NC04YmI0LTI0Njk5YjRlYzQ3NSIsImFkZHJlc3MiOiJkMzA4NDhjYTY1NTNmYzM0YWEzNDJhZGQyODkwN2UxZWNlZjJjYjZhIiwiQ3J5cHRvIjp7ImNpcGhlcnRleHQiOiI1YzcwNDk0ZGZiNjhhMWVjZTcyNDVlN2FhM2ZhOWZmNTk4ZjM3OGZiMmVhMjRhMGFjOTY3ZTRhMGRiMDlkNThiIiwiY2lwaGVycGFyYW1zIjp7Iml2IjoiY2IzZGJiZTM0MDI0ZWRmNzk1NDYyMzBmYjg4OGI2MjUifSwiY2lwaGVyIjoiYWVzLTEyOC1jdHIiLCJrZGYiOiJzY3J5cHQiLCJrZGZwYXJhbXMiOnsiZGtsZW4iOjMyLCJzYWx0IjoiNTNkMjYzNDA1ZWE2ZDk4YWIzYjViOTYxYWVlMTZiYWE4NTk5Njc3ODcxYWFlZWFiZDY2ZWRjZDRhZTM4ZWIwMiIsIm4iOjEwMjQsInIiOjgsInAiOjF9LCJtYWMiOiI3YjE2YzY4N2U3ZGMyNTBjZjEwNGY2NTVmZmYzZGE5ZjAxZDk4YjBiZGM4MzIyMGUzMmIwMjFiN2Q0YzM2NzUzIn19\",\n\t\"type\": \"ETHEREUM\",\n\t\"password\": \"cryptomaniacsether1\"\n}"
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/wallet/user/abe",
+			"request": {
+				"url": "http://localhost:8080/api/wallet/user/abe",
+				"method": "GET",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []

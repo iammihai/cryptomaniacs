@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeshift.cryptomaniacs.controller.UserRepository;
-import com.tradeshift.cryptomaniacs.controller.WalletRepository;
 import com.tradeshift.cryptomaniacs.entity.User;
 import com.tradeshift.cryptomaniacs.entity.Wallet;
 
@@ -22,15 +21,13 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
-	private WalletRepository walletRepository;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
 
-	@RequestMapping("{username}")
+	@RequestMapping(value = "{username}", method = RequestMethod.GET)
 	public User get(@PathVariable("username") String username) {
 		return userRepository.findByUsername(username);
 	}
@@ -40,16 +37,9 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
-	@RequestMapping("/{username}/wallet")
+	@RequestMapping(value = "/{username}/wallet", method = RequestMethod.GET)
 	public List<Wallet> getWallets(@PathVariable("username") String username) {
 		return get(username).getWallets();
-	}
-
-	@RequestMapping(value = "/{username}/wallet", method = RequestMethod.POST)
-	public Wallet addWallet(@PathVariable("username") String username, @RequestBody Wallet wallet) {
-		User user = get(username);
-		wallet.setUser(user);
-		return walletRepository.save(wallet);
 	}
 
 }
