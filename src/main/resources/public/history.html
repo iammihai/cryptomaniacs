@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app="cryptoApp" class="ts-bg-lite ts-engine-webkit ts-device-mouse ts-has-sidebar-first ts-ready ts-desktop-only ts-mobile ts-tablet ts-desktop">
+
+<head>
+	<title>Transaction History</title>
+	<meta name="viewport" content="width=device-width"/>
+	<script src="http://d5wfroyti11sa.cloudfront.net/prod/client/ts-9.2.4.min.js"></script>
+	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+</head>
+
+<body data-ts="DoxChrome" data-ts-spirit="ts.dox.ChromeSpirit" class="ts-doxchrome ts-spirit ts-menudone">
+	<div style="height:66px" class="ts-bg-dark"></div>
+	<div data-ts="MainContent" ng-controller="myController">
+	<aside data-ts="SideBar" class="ts-sidebar ts-spirit ts-autoclose ts-sidebar-first ts-sideshow ts-3d ts-opening ts-open"
+			data-ts-spirit="ts.ui.SideBarSpirit" data-ts.open="true" style="width:250px">
+		<header class="ts-header ts-toolbar ts-spirit ts-macro ts-hasleft ts-bg-dark ts-small" data-ts-spirit="ts.ui.ToolBarSpirit">
+			<menu id="key541364707key412634654-items" class="ts-header ts-toolbar ts-spirit ts-macro ts-hasleft ts-hassearch ts-bg-dark ts-small">
+				<li id="key541364707key412634654-title" class="ts-toolbar-item ts-toolbar-title ts-flex" style="width: 252px;">
+					<img src="assets/ts.png" style="width:220px; height:60px; margin-top: -11px"/>
+				</li>
+			</menu>
+		</header>
+		
+		<div data-ts="Panel" data-ts-spirit="ts.ui.PanelSpirit" class="ts-panel ts-spirit ts-bg-dark" style="margin-left: -21px; margin-right: -22px; padding-top: 0px">
+			<menu data-ts="DoxMenu" data-ts-spirit="ts.dox.MenuSpirit" class="ts-doxmenu ts-spirit ts-menu">
+				<li data-ts="DoxItem" data-ts-spirit="ts.dox.ItemSpirit" class="ts-doxitem ts-spirit">
+					<a href="#components/asides/" tabindex="-1" style="border-bottom:none; padding:22px 11px 22px 33px; background-color:#3f3f3f; color:#ffffff">
+						<i data-ts="Icon" src="#docs-icon-content-view-array" data-ts-spirit="ts.ui.NextIconSpirit" class="ts-icon ts-spirit">
+							<svg id="docs-icon-content-view-array" width="30" height="30" viewBox="0 0 22 22">
+								<path d="M16.5 3.001h-9c-.827 0-1.5.673-1.5 1.5v15c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-15c0-.827-.673-1.5-1.5-1.5zm-14.5 4v10c0 1.103.897 2 2 2h1v-14H4c-1.103 0-2 .897-2 2zm18-2h-1v14h1c1.104 0 2-.897 2-2v-10c0-1.103-.896-2-2-2z"
+									fill="#757575"> </path>
+							</svg>
+						</i> 
+						<span style="font-size: 120%">Home</span>
+					</a>
+				</li>
+				<li data-ts="DoxItem" data-ts-spirit="ts.dox.ItemSpirit" class="ts-doxitem ts-spirit">
+					<a href="#components/asides/" tabindex="-1" style="border-bottom:none; padding:22px 11px 22px 33px; background-color:#3f3f3f; color:#ffffff">
+						<i data-ts="Icon" src="#docs-icon-content-view-array" data-ts-spirit="ts.ui.NextIconSpirit" class="ts-icon ts-spirit">
+							<svg id="docs-icon-content-view-array" width="30" height="30" viewBox="0 0 24 24">
+								<path d="M16.5 3.001h-9c-.827 0-1.5.673-1.5 1.5v15c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-15c0-.827-.673-1.5-1.5-1.5zm-14.5 4v10c0 1.103.897 2 2 2h1v-14H4c-1.103 0-2 .897-2 2zm18-2h-1v14h1c1.104 0 2-.897 2-2v-10c0-1.103-.896-2-2-2z"
+									fill="#757575"> </path>
+							</svg>
+						</i> 
+						<span style="font-size: 120%">Wallet</span>
+					</a>
+				</li>
+				<li data-ts="DoxItem" data-ts-spirit="ts.dox.ItemSpirit" class="ts-doxitem ts-spirit">
+					<a href="#components/asides/" tabindex="-1" style="border-bottom:none; padding:22px 11px 22px 33px; background-color:#3f3f3f; color:#ffffff">
+						<i data-ts="Icon" src="#docs-icon-content-view-array" data-ts-spirit="ts.ui.NextIconSpirit" class="ts-icon ts-spirit">
+							<svg id="docs-icon-content-view-array" width="30" height="30" viewBox="0 0 24 24">
+								<path d="M16.5 3.001h-9c-.827 0-1.5.673-1.5 1.5v15c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-15c0-.827-.673-1.5-1.5-1.5zm-14.5 4v10c0 1.103.897 2 2 2h1v-14H4c-1.103 0-2 .897-2 2zm18-2h-1v14h1c1.104 0 2-.897 2-2v-10c0-1.103-.896-2-2-2z"
+									fill="#757575"> </path>
+							</svg>
+						</i> 
+						<span style="font-size: 120%">Transaction History</span>
+					</a>
+				</li>
+				<li data-ts="DoxItem" data-ts-spirit="ts.dox.ItemSpirit" class="ts-doxitem ts-spirit">
+					<a href="#components/asides/" tabindex="-1" style="border-bottom:none; padding:22px 11px 22px 33px; background-color:#3f3f3f; color:#ffffff">
+						<i data-ts="Icon" src="#docs-icon-content-view-array" data-ts-spirit="ts.ui.NextIconSpirit" class="ts-icon ts-spirit">
+							<svg id="docs-icon-content-view-array" width="30" height="30" viewBox="0 0 24 24">
+								<path d="M16.5 3.001h-9c-.827 0-1.5.673-1.5 1.5v15c0 .827.673 1.5 1.5 1.5h9c.827 0 1.5-.673 1.5-1.5v-15c0-.827-.673-1.5-1.5-1.5zm-14.5 4v10c0 1.103.897 2 2 2h1v-14H4c-1.103 0-2 .897-2 2zm18-2h-1v14h1c1.104 0 2-.897 2-2v-10c0-1.103-.896-2-2-2z"
+									fill="#757575"> </path>
+							</svg>
+						</i> 
+						<span style="font-size: 120%">Portfolio</span>
+					</a>
+				</li>
+			</menu>
+		</div>
+	</aside>	
+	
+	<main data-ts="Main" data-ts-spirit="ts.ui.MainSpirit" class="ts-main ts-spirit" tabindex="-1" style="margin-left: -49px;">
+	<!-- <div style="height:66px" class="ts-bg-dark"></div> -->
+		<h1>Search for transaction</h1>
+		<form data-ts="Form">
+			<table>
+			<tr> 
+			<td>
+				<fieldset>
+					<label>
+						<span>Available wallets:</span>
+						<select>
+							<option value="a" selected>Wallet_1</option>
+							<option value="b">Wallet_2</option>
+							<option value="c">Wallet_3</option>
+						</select>
+					</label>
+				</fieldset>
+			</td>
+			</tr>
+			<tr> 
+			<td> 
+				<fieldset>
+					<label> 
+						<span>Start date:</span>
+						<input id="startdate" type="date" onselect="changeDate()"
+							min="2017-08-01"/>
+				</fieldset>
+				</td>
+				<td>
+				<fieldset>
+					<label>
+						<span>End date:</span>
+						<input id="enddate" type="date" onselect="changeDate()" />
+					</label>
+				</fieldset>
+			</td>
+			</tr>
+			<tr>
+			<td>
+				<fieldset>
+					<label>
+						<span>Type of transaction:</span>
+						<select>
+							<option value="a" selected>All</option>
+							<option value="b">Inbound</option>
+							<option value="c">Outbound</option>
+						</select>
+					</label>
+				</fieldset>
+			</td>
+			</tr>
+			<tr>
+			<td>
+				<button id="generatetrans_button" data-ts="Button" data-ts.busy="false" data-ts-spirit="ts.dox.LinkSpirit" type="button"
+				class="ts-primary ts-button ts-spirit ts-ready">
+					<span>Generate transactions</span>
+				</button>
+			</td>
+			</tr>
+			</table>
+			<div id="transactionslist" data-ts="Table" style="display:none"></div>
+		</form>
+	</main>
+	</div>
+</body>
+</html>
