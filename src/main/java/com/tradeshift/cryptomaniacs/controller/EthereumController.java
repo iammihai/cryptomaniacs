@@ -34,10 +34,6 @@ public class EthereumController {
 	@Autowired
 	private Web3j web3j;
 
-	public Block wee() throws IOException {
-		return web3j.ethGetBlockByNumber(DefaultBlockParameterName.LATEST, true).send().getBlock();
-	}
-
 	public String getClientVersion() throws IOException {
 		return web3j.web3ClientVersion().send().getWeb3ClientVersion();
 	}
