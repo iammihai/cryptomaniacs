@@ -1,4 +1,4 @@
-package com.tradeshift.cryptomaniacs.app;
+package com.tradeshift.cryptomaniacs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
