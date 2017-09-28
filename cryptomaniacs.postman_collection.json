@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "cryptomaniacs",
+		"_postman_id": "21fbfde9-5494-b90c-9745-03e2714c1d9f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/user",
+			"request": {
+				"url": "http://localhost:8080/api/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"firstname1\",\n    \"lastName\": \"lastname1\",\n    \"username\": \"username1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/user/list",
+			"request": {
+				"url": "http://localhost:8080/api/user/list",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/user/abe/wallet",
+			"request": {
+				"url": "http://localhost:8080/api/user/abe/wallet",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/user/username1/wallet",
+			"request": {
+				"url": "http://localhost:8080/api/user/username1/wallet",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\":\"def\",\n\t\"type\": \"ETHEREUM\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

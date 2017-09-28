@@ -18,10 +18,14 @@ import javax.validation.constraints.NotNull;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "address"))
 public class Wallet implements Serializable {
 
+	public static enum Type {
+		BITCOIN, ETHEREUM
+	}
+
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private User user;
-	private CryptoCurrencyType cryptoCurrencyType;
+	private Type type;
 	private String address;
 	private String data;
 	private String password;
@@ -47,13 +51,13 @@ public class Wallet implements Serializable {
 	}
 
 	@NotNull
-	@Enumerated(EnumType.STRING)
-	public CryptoCurrencyType getCryptoCurrencyType() {
-		return cryptoCurrencyType;
+@Enumerated(EnumType.STRING)
+	public Type getType() {
+		return type;
 	}
 
-	public void setCryptoCurrencyType(CryptoCurrencyType cryptoCurrencyType) {
-		this.cryptoCurrencyType = cryptoCurrencyType;
+	public void setType(Type type) {
+		this.type = type;
 	}
 
 	@NotNull

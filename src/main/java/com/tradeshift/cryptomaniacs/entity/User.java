@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,7 +20,7 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Long id;
+	public String id;
 	private String firstName;
 	private String lastName;
 	private String username;
@@ -29,16 +28,15 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
 	@NotNull
-	@Size(max = 25)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -48,7 +46,6 @@ public class User implements Serializable {
 	}
 
 	@NotNull
-	@Size(max = 25)
 	public String getLastName() {
 		return lastName;
 	}
@@ -58,7 +55,6 @@ public class User implements Serializable {
 	}
 
 	@NotNull
-	@Size(max = 25)
 	public String getUsername() {
 		return username;
 	}

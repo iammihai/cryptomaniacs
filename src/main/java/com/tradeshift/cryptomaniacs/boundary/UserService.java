@@ -30,7 +30,7 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
-	@RequestMapping(value = "{username}", method = RequestMethod.GET)
+	@RequestMapping("{username}")
 	public User get(@PathVariable("username") String username) {
 		return userRepository.findByUsername(username);
 	}
@@ -40,14 +40,14 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
-	@RequestMapping(value = "/{username}/wallet", method = RequestMethod.GET)
+	@RequestMapping("/{username}/wallet")
 	public List<Wallet> getWallets(@PathVariable("username") String username) {
-		return userRepository.findByUsername(username).getWallets();
+		return get(username).getWallets();
 	}
 
 	@RequestMapping(value = "/{username}/wallet", method = RequestMethod.POST)
 	public Wallet addWallet(@PathVariable("username") String username, @RequestBody Wallet wallet) {
-		User user = userRepository.findByUsername(username);
+		User user = get(username);
 		wallet.setUser(user);
 		return walletRepository.save(wallet);
 	}
