@@ -2,19 +2,26 @@ package com.tradeshift.cryptomaniacs.boundary;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.web3j.crypto.CipherException;
+import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.core.methods.response.Transaction;
+import org.web3j.protocol.exceptions.TransactionTimeoutException;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.tradeshift.cryptomaniacs.controller.EthereumController;
 import com.tradeshift.cryptomaniacs.controller.UserRepository;
 import com.tradeshift.cryptomaniacs.controller.WalletRepository;
@@ -57,8 +64,8 @@ public class WalletService {
 	}
 
 	@GetMapping(path = "/{address}/transactions")
-	public List<Transaction> transactions(@PathVariable String address,
-			@RequestParam(required = false, value = "block") final String block) throws IOException {
+	public List<Transaction> transactions(@PathVariable String address, @RequestParam(required = false, value = "block") final String block)
+			throws IOException {
 
 		return ethereumController.getTransactionHistory(address, block);
 
@@ -67,6 +74,15 @@ public class WalletService {
 	@RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
 	public List<Wallet> userWallets(@PathVariable("username") String username) {
 		return walletRepository.findByUser(userRepository.findByUsername(username));
+	}
+
+	@PostMapping(value = "{address}/sendfunds")
+	public EthSendTransaction sendFunds(@PathVariable("address") String address, @RequestParam(value = "dest") final String destAddress,
+			@RequestParam(value = "amount") final String value) throws JsonParseException, JsonMappingException, CipherException, IOException,
+			InterruptedException, TransactionTimeoutException, ExecutionException {
+		Wallet from = walletRepository.findByAddress(address);
+		return ethereumController.transact(from, destAddress, value);
+
 	}
 
 }
