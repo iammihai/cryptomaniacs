@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
 
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang3.StringUtils;
@@ -74,5 +75,11 @@ public class WalletService {
 	public List<Wallet> userWallets(@PathVariable("username") String username) {
 		return walletRepository.findByUser(userRepository.findByUsername(username));
 	}
+	
+	@RequestMapping(value = "/exchange", method = RequestMethod.GET)
+	public Double exchange(@QueryParam("currency") String currency, @QueryParam("amount") Double amount) throws Exception {
+		return ethereumController.getExchange(currency, amount);
+	}
 
 }
+

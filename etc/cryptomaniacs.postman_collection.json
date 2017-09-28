@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "cryptomaniacs",
-		"_postman_id": "21fbfde9-5494-b90c-9745-03e2714c1d9f",
+		"_postman_id": "27068a12-7b2d-e300-416c-b05823584b6d",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -33,7 +33,10 @@
 				"url": "http://localhost:8080/api/user/list",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -44,7 +47,10 @@
 				"url": "http://localhost:8080/api/user/abe",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -55,7 +61,10 @@
 				"url": "http://localhost:8080/api/user/abe/wallet",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -86,7 +95,10 @@
 				"url": "http://localhost:8080/api/wallet/user/abe",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -97,7 +109,10 @@
 				"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/ballance",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -108,7 +123,10 @@
 				"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -141,7 +159,10 @@
 				},
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -150,6 +171,47 @@
 			"name": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions",
 			"request": {
 				"url": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/wallet/exchange?currency=usd&amount=2",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/api/wallet/exchange?currency=usd&amount=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"wallet",
+						"exchange"
+					],
+					"query": [
+						{
+							"key": "currency",
+							"value": "usd",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "amount",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
 				"method": "GET",
 				"header": [],
 				"body": {},

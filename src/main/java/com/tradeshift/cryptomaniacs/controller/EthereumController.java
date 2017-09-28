@@ -2,10 +2,12 @@ package com.tradeshift.cryptomaniacs.controller;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.http.client.fluent.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.web3j.protocol.Web3j;
@@ -68,6 +70,19 @@ public class EthereumController {
 	public String extractAddress(final String data) {
 		final JSONObject json = JSONObject.fromObject(data);
 		return "0x" + json.get("address");
+	}
+	
+	public Double getExchange(final String currency, final Double amount) throws Exception {
+		try {
+			final String string = Request.Get("https://coinmarketcap-nexuist.rhcloud.com/api/eth").execute().returnContent().asString(StandardCharsets.UTF_8);
+			final JSONObject json = JSONObject.fromObject(string);
+			final JSONObject price = (JSONObject) json.get("price");
+			final Double oneEthereum = (Double)price.get(currency);
+			return oneEthereum * amount;
+		} catch (final Exception e) {
+			e.printStackTrace();
+			return Double.NaN;
+		}
 	}
 
 }
