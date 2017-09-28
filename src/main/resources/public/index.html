@@ -1,39 +1,34 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Layout</title>
-		<meta name="viewport" content="width=device-width"/>
-	</head>
+<html ng-app="cryptoApp" >
+
 	<script src="http://d5wfroyti11sa.cloudfront.net/prod/client/ts-9.2.4.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+	
+	<head>
+		<title>Crypto Payment</title>
+		<meta name="viewport" content="width=device-width"/>
+		<div id="Logo">
+			<img src="assets/LogoUpdate.png"></img>
+		</div>
+		<header data-ts="TopBar">
+			
+		</header>
+	</head>
+	
 	<body>
 		
-		<header data-ts="TopBar"></header>
-		<min data-ts="Main">
-			<div data-ts="MainContent">
-				<h1>Main content</h1>
-			</div>
+		<main data-ts="Main">
+			<h1>Main content</h1>
+			<div ng-controller="myController"></div>
 		</main>
+		<aside ts-aside>
+			<div ts-panel>
+				<p>Aside content</p>
+			</div>
+		</aside>
+			
 		
-		<menu data-ts="Menu">
-		<li>
-			<button>
-				<span>Item One</span>
-				<i class="ts-icon-rating"></i>
-			</button>
-		</li>
-		<li>
-			<button>
-				<span>Item Two</span>
-				<i class="ts-icon-rating"></i>
-			</button>
-		</li>
-		<li>
-			<button>
-				<span>Item Three</span>
-				<i class="ts-icon-rating"></i>
-			</button>
-		</li>
-	</menu>
 		
 	</body>
 </html>
