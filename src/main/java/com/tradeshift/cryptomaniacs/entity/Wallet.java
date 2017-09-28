@@ -2,7 +2,10 @@ package com.tradeshift.cryptomaniacs.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +23,8 @@ public class Wallet implements Serializable {
 	private User user;
 	private CryptoCurrencyType cryptoCurrencyType;
 	private String address;
+	private String data;
+	private String password;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,6 +47,7 @@ public class Wallet implements Serializable {
 	}
 
 	@NotNull
+	@Enumerated(EnumType.STRING)
 	public CryptoCurrencyType getCryptoCurrencyType() {
 		return cryptoCurrencyType;
 	}
@@ -57,6 +63,25 @@ public class Wallet implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}	
+
+	@NotNull
+	@Column(columnDefinition = "VARCHAR(MAX)")
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+	
+	@NotNull
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
