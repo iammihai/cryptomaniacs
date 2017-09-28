@@ -5,13 +5,16 @@ import java.util.List;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeshift.cryptomaniacs.controller.UserRepository;
+import com.tradeshift.cryptomaniacs.controller.WalletRepository;
 import com.tradeshift.cryptomaniacs.entity.User;
+import com.tradeshift.cryptomaniacs.entity.Wallet;
 
 @RestController
 @RequestMapping(value = "/api/user", produces = MediaType.APPLICATION_JSON)
@@ -19,10 +22,17 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private WalletRepository walletRepository;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<User> findAll() {
 		return userRepository.findAll();
+	}
+
+	@RequestMapping(value = "{username}", method = RequestMethod.GET)
+	public User get(@PathVariable("username") String username) {
+		return userRepository.findByUsername(username);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -30,13 +40,16 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
-	@RequestMapping("/sample")
-	public User sample(){
-		User u = new User();
-		u.setUsername("username");
-		u.setLastName("lastname");
-		u.setFirstName("firstname");
-		return u;
+	@RequestMapping(value = "/{username}/wallet", method = RequestMethod.GET)
+	public List<Wallet> getWallets(@PathVariable("username") String username) {
+		return userRepository.findByUsername(username).getWallets();
+	}
+
+	@RequestMapping(value = "/{username}/wallet", method = RequestMethod.POST)
+	public Wallet addWallet(@PathVariable("username") String username, @RequestBody Wallet wallet) {
+		User user = userRepository.findByUsername(username);
+		wallet.setUser(user);
+		return walletRepository.save(wallet);
 	}
 
 }

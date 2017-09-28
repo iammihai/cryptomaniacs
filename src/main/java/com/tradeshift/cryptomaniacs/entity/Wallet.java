@@ -7,10 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@XmlRootElement
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "address"))
 public class Wallet implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -30,6 +32,7 @@ public class Wallet implements Serializable {
 	}
 
 	@ManyToOne
+	@NotNull
 	public User getUser() {
 		return user;
 	}
@@ -38,6 +41,7 @@ public class Wallet implements Serializable {
 		this.user = user;
 	}
 
+	@NotNull
 	public CryptoCurrencyType getCryptoCurrencyType() {
 		return cryptoCurrencyType;
 	}
@@ -46,6 +50,7 @@ public class Wallet implements Serializable {
 		this.cryptoCurrencyType = cryptoCurrencyType;
 	}
 
+	@NotNull
 	public String getAddress() {
 		return address;
 	}

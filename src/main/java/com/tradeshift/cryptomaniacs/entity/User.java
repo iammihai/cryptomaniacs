@@ -8,13 +8,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Long Id;
+	public Long id;
 	private String firstName;
 	private String lastName;
 	private String username;
@@ -23,13 +30,15 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
+	@NotNull
+	@Size(max = 25)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -38,6 +47,8 @@ public class User implements Serializable {
 		this.firstName = firstName;
 	}
 
+	@NotNull
+	@Size(max = 25)
 	public String getLastName() {
 		return lastName;
 	}
@@ -46,6 +57,8 @@ public class User implements Serializable {
 		this.lastName = lastName;
 	}
 
+	@NotNull
+	@Size(max = 25)
 	public String getUsername() {
 		return username;
 	}
@@ -55,6 +68,7 @@ public class User implements Serializable {
 	}
 
 	@OneToMany(mappedBy = "user")
+	@JsonIgnore
 	public List<Wallet> getWallets() {
 		return wallets;
 	}
