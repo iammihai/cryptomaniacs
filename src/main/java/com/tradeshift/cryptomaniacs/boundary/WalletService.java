@@ -1,10 +1,12 @@
 package com.tradeshift.cryptomaniacs.boundary;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,9 +60,13 @@ public class WalletService {
 
 	@GetMapping(path = "/{address}/transactions")
 	public List<Transaction> transactions(@PathVariable String address,
-			@RequestParam(required = false, value = "block") final String block) throws IOException {
+			@RequestParam(required = false, value = "block") final String blockNumber) throws IOException {
 
-		return ethereumController.getTransactionHistory(address, block);
+		if (StringUtils.isNotBlank(blockNumber)) {
+			return ethereumController.getTransactions(address, new BigInteger(blockNumber));
+		} else {
+			return ethereumController.getTransactions(address, 100);
+		}
 
 	}
 

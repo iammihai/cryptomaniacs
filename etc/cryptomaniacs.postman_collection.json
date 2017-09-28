@@ -145,6 +145,17 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions",
+			"request": {
+				"url": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
