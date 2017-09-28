@@ -103,6 +103,17 @@
 			"response": []
 		},
 		{
+			"name": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
+			"request": {
+				"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions?block=4318691",
 			"request": {
 				"url": {
@@ -128,17 +139,6 @@
 					],
 					"variable": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
-			"request": {
-				"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
 				"method": "GET",
 				"header": [],
 				"body": {},
