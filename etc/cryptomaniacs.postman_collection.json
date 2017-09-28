@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "cryptomaniacs",
-		"_postman_id": "27068a12-7b2d-e300-416c-b05823584b6d",
+		"_postman_id": "017cfea6-63f5-1af6-3f2a-21e265a93960",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -182,10 +182,10 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/api/wallet/exchange?currency=usd&amount=2",
+			"name": "http://localhost:8080/api/exchange/convert?currency=usd&amount=1",
 			"request": {
 				"url": {
-					"raw": "http://localhost:8080/api/wallet/exchange?currency=usd&amount=1",
+					"raw": "http://localhost:8080/api/exchange/convert?currency=usd&amount=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -193,8 +193,8 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"wallet",
-						"exchange"
+						"exchange",
+						"convert"
 					],
 					"query": [
 						{
