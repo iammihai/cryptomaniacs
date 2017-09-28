@@ -1,20 +1,29 @@
 package com.tradeshift.cryptomaniacs.boundary;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import javax.ws.rs.core.MediaType;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.web3j.crypto.CipherException;
+import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.core.methods.response.Transaction;
+import org.web3j.protocol.exceptions.TransactionTimeoutException;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.tradeshift.cryptomaniacs.controller.EthereumController;
 import com.tradeshift.cryptomaniacs.controller.UserRepository;
 import com.tradeshift.cryptomaniacs.controller.WalletRepository;
@@ -73,12 +82,13 @@ public class WalletService {
 		return walletRepository.findByUser(userRepository.findByUsername(username));
 	}
 
-	@PostMapping(value = "{address}/sendfunds")
-	public EthSendTransaction sendFunds(@PathVariable("address") String address, @RequestParam(value = "dest") final String destAddress,
-			@RequestParam(value = "amount") final String value) throws JsonParseException, JsonMappingException, CipherException, IOException,
-			InterruptedException, TransactionTimeoutException, ExecutionException {
-		Wallet from = walletRepository.findByAddress(address);
-		return ethereumController.transact(from, destAddress, value);
+	@PostMapping(value = "{address}/transact")
+	public EthSendTransaction transact(@PathVariable("fromAddress") String fromAddress,
+			@RequestParam(value = "toAddress") final String toAddress,
+			@RequestParam(value = "amount") final String value) throws Exception {
+		Wallet from = walletRepository.findByAddress(fromAddress);
+		return ethereumController.transact(from, toAddress, BigInteger.valueOf(22000l), BigInteger.valueOf(25000l),
+				BigInteger.valueOf(1000000000000000l));
 
 	}
 
