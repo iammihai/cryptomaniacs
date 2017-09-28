@@ -90,6 +90,50 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/wallet/0x8B8ceC1Ac92cb3B3Bb2A00d394Aa9474f91ba05d/ballance",
+			"request": {
+				"url": "http://localhost:8080/api/wallet/0x8B8ceC1Ac92cb3B3Bb2A00d394Aa9474f91ba05d/ballance",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions?block=4318691",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions?block=4318691",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"wallet",
+						"0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "block",
+							"value": "4318691",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

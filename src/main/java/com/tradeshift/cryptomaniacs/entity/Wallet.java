@@ -28,7 +28,7 @@ public class Wallet implements Serializable {
 	private Type type;
 	private String address;
 	private String password;
-	private byte[] data;
+	private String data;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,12 +70,12 @@ public class Wallet implements Serializable {
 	}
 
 	@NotNull
-	@Column(columnDefinition = "BINARY(2048)")
-	public byte[] getData() {
+	@Column(columnDefinition = "VARCHAR(2048)")
+	public String getData() {
 		return data;
 	}
 
-	public void setData(byte[] data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
