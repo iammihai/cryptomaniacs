@@ -25,14 +25,14 @@ import com.tradeshift.cryptomaniacs.entity.Wallet;
 public class WalletService {
 
 	@Autowired
+	private EthereumController ethereumController;
+	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private WalletRepository walletRepository;
-	@Autowired
-	private EthereumController ethereumController;
 
 	@RequestMapping(value = "/user/{username}", method = RequestMethod.POST)
-	public Wallet addWallet(@PathVariable("username") String username, @RequestBody Wallet wallet) {
+	public Wallet add(@PathVariable("username") String username, @RequestBody Wallet wallet) {
 		final String address = ethereumController.extractAddress(wallet.getData());
 		wallet.setAddress(address);
 		wallet.setUser(userRepository.findByUsername(username));
@@ -41,25 +41,32 @@ public class WalletService {
 		return wallet;
 	}
 
-	@RequestMapping(value = "/{address}", method = RequestMethod.GET)
-	public Wallet findByAddress(@PathVariable("address") String address) {
-		return walletRepository.findByAddress(address);
-	}
-
-	@RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
-	public List<Wallet> findByUser(@PathVariable("username") String username) {
-		return walletRepository.findByUser(userRepository.findByUsername(username));
-	}
-
 	@RequestMapping(value = "/{address}/ballance", method = RequestMethod.GET)
 	public double ballance(@PathVariable("address") String address) throws IOException {
 		return ethereumController.getBallance(address);
 	}
 
+	@RequestMapping(value = "/{address}", method = RequestMethod.GET)
+	public Wallet get(@PathVariable("address") String address) {
+		return walletRepository.findByAddress(address);
+	}
+
+	@RequestMapping(value = "/{address}/data", method = RequestMethod.GET)
+	public String getData(@PathVariable("address") String address) {
+		return get(address).getDataParsed();
+	}
+
 	@GetMapping(path = "/{address}/transactions")
-	public List<Transaction> getTransactions(@PathVariable String address,
+	public List<Transaction> transactions(@PathVariable String address,
 			@RequestParam(required = false, value = "block") final String block) throws IOException {
+
 		return ethereumController.getTransactionHistory(address, block);
+
+	}
+
+	@RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
+	public List<Wallet> userWallets(@PathVariable("username") String username) {
+		return walletRepository.findByUser(userRepository.findByUsername(username));
 	}
 
 }

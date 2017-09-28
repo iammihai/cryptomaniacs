@@ -23,7 +23,7 @@ public class UserService {
 	private UserRepository userRepository;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public List<User> findAll() {
+	public List<User> list() {
 		return userRepository.findAll();
 	}
 
@@ -38,7 +38,7 @@ public class UserService {
 	}
 
 	@RequestMapping(value = "/{username}/wallet", method = RequestMethod.GET)
-	public List<Wallet> getWallets(@PathVariable("username") String username) {
+	public List<Wallet> userWallets(@PathVariable("username") String username) {
 		return get(username).getWallets();
 	}
 

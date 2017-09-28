@@ -1,6 +1,7 @@
 package com.tradeshift.cryptomaniacs.entity;
 
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+
+import org.bouncycastle.util.encoders.Base64;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "address"))
@@ -77,6 +83,12 @@ public class Wallet implements Serializable {
 
 	public void setData(String data) {
 		this.data = data;
+	}
+
+	@JsonIgnore
+	@Transient
+	public String getDataParsed() {
+		return new String(Base64.decode(data), StandardCharsets.UTF_8);
 	}
 
 	@NotNull
