@@ -33,7 +33,7 @@ public class WalletService {
 
 	@RequestMapping(value = "/user/{username}", method = RequestMethod.POST)
 	public Wallet add(@PathVariable("username") String username, @RequestBody Wallet wallet) {
-		final String address = ethereumController.extractAddress(wallet.getData());
+		final String address = ethereumController.extractAddress(wallet.getDataParsed());
 		wallet.setAddress(address);
 		wallet.setUser(userRepository.findByUsername(username));
 		wallet.setType(Wallet.Type.ETHEREUM);

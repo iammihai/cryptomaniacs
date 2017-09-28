@@ -61,7 +61,7 @@ public class EthereumController {
 
 	public String extractAddress(final String data) {
 		final JSONObject json = JSONObject.fromObject(data);
-		return (String) json.get("address");
+		return "0x" + json.get("address");
 	}
 
 }
