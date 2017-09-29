@@ -18,9 +18,11 @@ import org.web3j.protocol.core.DefaultBlockParameterNumber;
 import org.web3j.protocol.core.methods.request.RawTransaction;
 import org.web3j.protocol.core.methods.response.EthBlock.Block;
 import org.web3j.protocol.core.methods.response.EthBlockNumber;
+import org.web3j.protocol.core.methods.response.EthGasPrice;
 import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.core.methods.response.Transaction;
+import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 import org.web3j.utils.Numeric;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,8 +36,8 @@ public class EthereumController {
 	@Autowired
 	private Web3j web3j;
 
-	public String getClientVersion() throws IOException {
-		return web3j.web3ClientVersion().send().getWeb3ClientVersion();
+	public Web3ClientVersion getClientVersion() throws IOException {
+		return web3j.web3ClientVersion().send();
 	}
 
 	public double getBallance(final String fromAddress) throws IOException {
@@ -76,7 +78,7 @@ public class EthereumController {
 		return "0x" + json.get("address");
 	}
 
-	public EthSendTransaction transact(Wallet fromWallet, final String toAddress, final BigInteger gasPrice,
+	public EthSendTransaction transact(Wallet fromWallet, final String toAddress,
 			final BigInteger gasLimit, final BigInteger value) throws Exception {
 		
 		ObjectMapper objectMapper = ObjectMapperFactory.getObjectMapper();
@@ -86,22 +88,26 @@ public class EthereumController {
 		BigInteger senderNonce = web3j
 				.ethGetTransactionCount(credentials.getAddress(), DefaultBlockParameterName.LATEST).send()
 				.getTransactionCount();
-
-		RawTransaction rawTransaction = RawTransaction.createEtherTransaction(senderNonce, gasPrice, gasLimit,
-				toAddress, value);
+		BigInteger gasPriceNetwork = getNetworkGasPrice().getGasPrice();
+		
+		RawTransaction rawTransaction = RawTransaction.createEtherTransaction(senderNonce, gasPriceNetwork, gasLimit, toAddress, value);
 
 		byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
 		String hexValue = Numeric.toHexString(signedMessage);
 
 		return web3j.ethSendRawTransaction(hexValue).send();
+		//return null;
 		// poll for transaction response via
 		// org.web3j.protocol.Web3j.ethGetTransactionReceipt(<txHash>)
-		
+
+	}
+
+	public EthGasPrice getNetworkGasPrice() throws IOException {
+		return web3j.ethGasPrice().send();
 	}
 
 	public String getNonce(final String address) throws IOException {
-		return web3j.ethGetTransactionCount(address, DefaultBlockParameterName.LATEST).send().getTransactionCount()
-				.toString();
+		return web3j.ethGetTransactionCount(address, DefaultBlockParameterName.LATEST).send().getTransactionCount().toString();
 	}
 
 }
