@@ -87,6 +87,44 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "1 ETH in EUR",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/api/exchange/convert?amount=1&currency=eur",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exchange",
+								"convert"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "currency",
+									"value": "eur",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -276,7 +314,7 @@
 					"name": "One transaction from Abe to George (directly from ETH network)",
 					"request": {
 						"url": {
-							"raw": "http://localhost:8080/api/tx/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/block-number?n=4321196",
+							"raw": "http://localhost:8080/api/tx/list/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/block-number?n=4321196",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -285,6 +323,7 @@
 							"path": [
 								"api",
 								"tx",
+								"list",
 								"0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a",
 								"block-number"
 							],
@@ -312,7 +351,7 @@
 					"name": "List recents Abe's transactions (directly from ETH)",
 					"request": {
 						"url": {
-							"raw": "http://localhost:8080/api/tx/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/last-blocks?n=20",
+							"raw": "http://localhost:8080/api/tx/list/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/last-blocks?n=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -321,13 +360,14 @@
 							"path": [
 								"api",
 								"tx",
+								"list",
 								"0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a",
 								"last-blocks"
 							],
 							"query": [
 								{
 									"key": "n",
-									"value": "20",
+									"value": "10",
 									"equals": true,
 									"description": ""
 								}
@@ -348,7 +388,7 @@
 					"name": "List recents George's transactions (directly from ETH)",
 					"request": {
 						"url": {
-							"raw": "http://localhost:8080/api/tx/0x17473c7E2aFcc56C984287FF7D5A79276894F58D/last-blocks?n=20",
+							"raw": "http://localhost:8080/api/tx/list/0x17473c7E2aFcc56C984287FF7D5A79276894F58D/last-blocks?n=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -357,13 +397,14 @@
 							"path": [
 								"api",
 								"tx",
+								"list",
 								"0x17473c7E2aFcc56C984287FF7D5A79276894F58D",
 								"last-blocks"
 							],
 							"query": [
 								{
 									"key": "n",
-									"value": "20",
+									"value": "10",
 									"equals": true,
 									"description": ""
 								}
@@ -377,6 +418,49 @@
 							"raw": ""
 						},
 						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Abe pays 0.001 ETH to George (pending check on https://etherscan.io)",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/api/tx/pay/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/0x17473c7E2aFcc56C984287FF7D5A79276894F58D?amount=1000000000000000&gasLimit=30000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tx",
+								"pay",
+								"0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a",
+								"0x17473c7E2aFcc56C984287FF7D5A79276894F58D"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "1000000000000000",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "gasLimit",
+									"value": "30000",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "https://etherscan.io"
 					},
 					"response": []
 				}

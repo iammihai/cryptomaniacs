@@ -46,15 +46,13 @@ public class TransactionService {
 	}
 
 	@PostMapping(value = "/pay/{fromAddress}/{toAddress}")
-	public EthSendTransaction transact(@PathVariable("fromAddress") String fromAddress,
+	public EthSendTransaction pay(@PathVariable("fromAddress") String fromAddress,
 			@PathVariable(value = "toAddress") final String toAddress,
 			@RequestParam(value = "amount") final String amount,
-			@RequestParam(value = "gasPrice") final String gasPrice,
 			@RequestParam(value = "gasLimit") final String gasLimit) throws Exception {
 
 		Wallet from = walletRepository.findByAddress(fromAddress);
-		return ethereumController.transact(from, new BigInteger(gasPrice), new BigInteger(gasLimit), toAddress,
-				new BigInteger(amount));
+		return ethereumController.pay(from, new BigInteger(gasLimit), toAddress, new BigInteger(amount));
 
 	}
 

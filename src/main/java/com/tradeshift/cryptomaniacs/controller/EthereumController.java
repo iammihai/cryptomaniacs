@@ -74,12 +74,13 @@ public class EthereumController {
 
 	}
 
-	public EthSendTransaction transact(Wallet fromWallet, final BigInteger gasPrice, final BigInteger gasLimit,
-			final String toAddress, final BigInteger value) throws Exception {
+	public EthSendTransaction pay(Wallet fromWallet, final BigInteger gasLimit, final String toAddress,
+			final BigInteger value) throws Exception {
 
 		Credentials credentials = extractCredentials(fromWallet);
 		BigInteger senderNonce = getNonce(credentials.getAddress());
 
+		BigInteger gasPrice = getNetworkGasPrice().getGasPrice();
 		RawTransaction rawTransaction = RawTransaction.createEtherTransaction(senderNonce, gasPrice, gasLimit,
 				toAddress, value);
 
