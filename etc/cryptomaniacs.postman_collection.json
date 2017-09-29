@@ -8,6 +8,45 @@
 	},
 	"item": [
 		{
+			"name": "eth network",
+			"description": "",
+			"item": [
+				{
+					"name": "client",
+					"request": {
+						"url": "http://localhost:8080/api/network/client",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "latest block number",
+					"request": {
+						"url": "http://localhost:8080/api/network/latest-block-number",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "gas price",
+					"request": {
+						"url": "http://localhost:8080/api/network/gas-price",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "exchange",
 			"description": "",
 			"item": [
@@ -56,9 +95,23 @@
 			"description": "",
 			"item": [
 				{
-					"name": "list users",
+					"name": "list users (Abe and George)",
 					"request": {
 						"url": "http://localhost:8080/api/user/list",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Abe",
+					"request": {
+						"url": "http://localhost:8080/api/user/abe",
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -88,27 +141,8 @@
 						"description": ""
 					},
 					"response": []
-				},
-				{
-					"name": "Abe user [x]",
-					"request": {
-						"url": "http://localhost:8080/api/user/abe",
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
 				}
 			]
-		},
-		{
-			"name": "others",
-			"description": "",
-			"item": []
 		},
 		{
 			"name": "wallets",
@@ -133,9 +167,9 @@
 							"response": []
 						},
 						{
-							"name": "Abe's wallet ETH  definition",
+							"name": "Abe's wallet ETH  keystore",
 							"request": {
-								"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
+								"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/keystore",
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -161,7 +195,7 @@
 							"response": []
 						},
 						{
-							"name": "add a new wallet for Abe [x]",
+							"name": "add a new wallet & ETH keystore for Abe [x]",
 							"request": {
 								"url": "http://localhost:8080/api/wallet/user/abe",
 								"method": "POST",
@@ -202,9 +236,9 @@
 							"response": []
 						},
 						{
-							"name": "George's wallet ETH  definition",
+							"name": "George's wallet ETH  keystore",
 							"request": {
-								"url": "http://localhost:8080/api/wallet/0x17473c7E2aFcc56C984287FF7D5A79276894F58D/data",
+								"url": "http://localhost:8080/api/wallet/0x17473c7E2aFcc56C984287FF7D5A79276894F58D/keystore",
 								"method": "GET",
 								"header": [],
 								"body": {
@@ -235,54 +269,118 @@
 			]
 		},
 		{
-			"name": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions?block=4318691",
-			"request": {
-				"url": {
-					"raw": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions?block=4318691",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"wallet",
-						"0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d",
-						"transactions"
-					],
-					"query": [
-						{
-							"key": "block",
-							"value": "4318691",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
+			"name": "transactions",
+			"description": "",
+			"item": [
+				{
+					"name": "One transaction from Abe to George (directly from ETH network)",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/api/tx/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/block-number?n=4321196",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tx",
+								"0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a",
+								"block-number"
+							],
+							"query": [
+								{
+									"key": "n",
+									"value": "4321196",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+				{
+					"name": "List recents Abe's transactions (directly from ETH)",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/api/tx/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/last-blocks?n=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tx",
+								"0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a",
+								"last-blocks"
+							],
+							"query": [
+								{
+									"key": "n",
+									"value": "20",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions",
-			"request": {
-				"url": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "List recents George's transactions (directly from ETH)",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/api/tx/0x17473c7E2aFcc56C984287FF7D5A79276894F58D/last-blocks?n=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tx",
+								"0x17473c7E2aFcc56C984287FF7D5A79276894F58D",
+								"last-blocks"
+							],
+							"query": [
+								{
+									"key": "n",
+									"value": "20",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

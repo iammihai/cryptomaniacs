@@ -28,8 +28,6 @@ import org.web3j.utils.Numeric;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tradeshift.cryptomaniacs.entity.Wallet;
 
-import net.sf.json.JSONObject;
-
 @Service
 public class EthereumController {
 
@@ -51,19 +49,22 @@ public class EthereumController {
 		return new BigInteger(firstBlock.getResult().replace("0x", ""), 16);
 	}
 
-	public List<Transaction> getTransactions(final String fromAddress, final int previousBlocks) throws IOException {
+	public List<Transaction> getTransactionsFromLastBlocks(final String fromAddress, final int lastBlocks)
+			throws IOException {
+
 		final List<Transaction> transactions = new ArrayList<>();
 		BigInteger currentBlockNumber = getLastestBlockNumber();
 
-		for (int i = previousBlocks; i > 0; i--) {
-			transactions.addAll(getTransactions(fromAddress, currentBlockNumber));
+		for (int i = lastBlocks; i > 0; i--) {
+			transactions.addAll(getTransactionsFromBlockNumber(fromAddress, currentBlockNumber));
 			currentBlockNumber = currentBlockNumber.subtract(BigInteger.ONE);
 		}
 
 		return transactions;
+
 	}
 
-	public List<Transaction> getTransactions(final String fromAddress, final BigInteger blockNumber)
+	public List<Transaction> getTransactionsFromBlockNumber(final String fromAddress, final BigInteger blockNumber)
 			throws IOException {
 
 		final Block block = web3j.ethGetBlockByNumber(new DefaultBlockParameterNumber(blockNumber), true).send()
@@ -73,21 +74,11 @@ public class EthereumController {
 
 	}
 
-	public String extractAddress(final String data) {
-		final JSONObject json = JSONObject.fromObject(data);
-		return "0x" + json.get("address");
-	}
+	public EthSendTransaction transact(Wallet fromWallet, final BigInteger gasPrice, final BigInteger gasLimit,
+			final String toAddress, final BigInteger value) throws Exception {
 
-	public EthSendTransaction transact(Wallet fromWallet, final String toAddress, final BigInteger gasPrice,
-			final BigInteger gasLimit, final BigInteger value) throws Exception {
-
-		ObjectMapper objectMapper = ObjectMapperFactory.getObjectMapper();
-		WalletFile walletFile = objectMapper.readValue(fromWallet.getDataParsed(), WalletFile.class);
-		Credentials credentials = Credentials
-				.create(org.web3j.crypto.Wallet.decrypt(fromWallet.getPassword(), walletFile));
-		BigInteger senderNonce = web3j
-				.ethGetTransactionCount(credentials.getAddress(), DefaultBlockParameterName.LATEST).send()
-				.getTransactionCount();
+		Credentials credentials = extractCredentials(fromWallet);
+		BigInteger senderNonce = getNonce(credentials.getAddress());
 
 		RawTransaction rawTransaction = RawTransaction.createEtherTransaction(senderNonce, gasPrice, gasLimit,
 				toAddress, value);
@@ -96,18 +87,21 @@ public class EthereumController {
 		String hexValue = Numeric.toHexString(signedMessage);
 
 		return web3j.ethSendRawTransaction(hexValue).send();
-		// poll for transaction response via
-		// org.web3j.protocol.Web3j.ethGetTransactionReceipt(<txHash>)
 
+	}
+
+	private Credentials extractCredentials(Wallet fromWallet) throws Exception {
+		ObjectMapper objectMapper = ObjectMapperFactory.getObjectMapper();
+		WalletFile walletFile = objectMapper.readValue(fromWallet.getDataParsed(), WalletFile.class);
+		return Credentials.create(org.web3j.crypto.Wallet.decrypt(fromWallet.getPassword(), walletFile));
 	}
 
 	public EthGasPrice getNetworkGasPrice() throws IOException {
 		return web3j.ethGasPrice().send();
 	}
 
-	public String getNonce(final String address) throws IOException {
-		return web3j.ethGetTransactionCount(address, DefaultBlockParameterName.LATEST).send().getTransactionCount()
-				.toString();
+	private BigInteger getNonce(final String address) throws IOException {
+		return web3j.ethGetTransactionCount(address, DefaultBlockParameterName.LATEST).send().getTransactionCount();
 	}
 
 }
