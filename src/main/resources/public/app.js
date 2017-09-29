@@ -29,6 +29,21 @@ app.controller("myController", function($scope){
 			['C', 'F', 'I']
 		]);
 	});
-	
+	ts.ui.get('#transactionslist1', table => {
+		table.cols(['One', 'Two', 'Tree']);
+		table.rows([
+			['A', 'D', 'G'],
+			['B', 'E', 'H'],
+			['C', 'F', 'I']
+		]);
+	});
+	ts.ui.get('#transactionslist2', table => {
+		table.cols(['One', 'Two', 'Tree']);
+		table.rows([
+			['A', 'D', 'G'],
+			['B', 'E', 'H'],
+			['C', 'F', 'I']
+		]);
+	});
 });
 

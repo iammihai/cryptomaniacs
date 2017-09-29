@@ -51,13 +51,39 @@
 			</div>
 		</aside>
 		<main data-ts="Main" data-ts-spirit="ts.ui.MainSpirit" class="ts-main ts-spirit" tabindex="-1">
-			<div data-ts="MainContent">
-				<h1>Main content</h1>
-				<button type="button" class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable()">
-					<span>Generate transactions</span>
-				</button>
-					<div id="transactionslist" data-ts="Table" data-ng-show="showMe" ></div>
+			<div data-ts="MainContent" data-ts-spirit="ts.ui.MainContentSpirit" class="ts-maincontent ts-spirit" tabindex="-1">
+				<article style="padding:20px;padding-bottom:110px">
+					<h1>Currency</h1>
+					<table>
+						<tr>
+							<td>
+								<img src="assets/eth.png" width="180" height="140" ></img>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form style="padding:15px">
+									<div id="transactionslist1" data-ts="Table"></div>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img src="assets/bit.png" width="140" height="80" style="padding-left: 40px" ></img>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form style="padding:15px">
+									<div id="transactionslist2" data-ts="Table"></div>
+								</form>
+							</td>
+						</tr>
+						
+					</table>
+				</article>
 			</div>
+			
 		</main>
 	</div>
 </body>
