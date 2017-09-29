@@ -54,33 +54,62 @@
 			<div data-ts="MainContent" data-ts-spirit="ts.ui.MainContentSpirit" class="ts-maincontent ts-spirit" tabindex="-1">
 				<article style="padding:20px;padding-bottom:110px">
 					<h1>Currency</h1>
+					<img src="assets/eth.png" width="180" height="140" ></img>
 					<table>
 						<tr>
 							<td>
-								<img src="assets/eth.png" width="180" height="140" ></img>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<form style="padding:15px">
-									<div id="transactionslist1" data-ts="Table"></div>
+								<form data-ts="Form" >
+									<fieldset>
+										<label>
+											<span>Amount to convert:</span>
+											<input type="text" required >
+											
+										</label>
+									</fieldset>
 								</form>
 							</td>
-						</tr>
-						<tr>
-							<td>
-								<img src="assets/bit.png" width="140" height="80" style="padding-left: 40px" ></img>
+							<td style="padding:25px">
+								<button id="convert_button1" data-ts="Button" data-ts.busy="false" data-ts-spirit="ts.dox.LinkSpirit" type="button"
+											class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable1()">
+										<span>CONVERT</span>
+								</button>
 							</td>
+							
 						</tr>
-						<tr>
-							<td>
-								<form style="padding:15px">
-									<div id="transactionslist2" data-ts="Table"></div>
-								</form>
-							</td>
-						</tr>
-						
 					</table>
+					
+					<form style="padding:15px">
+						<div id="transactionslist1" data-ts="Table" data-ng-show="showMe1"></div>
+					</form>
+						
+					<img src="assets/bit.png" width="140" height="80" style="padding-left: 40px" ></img>
+					<table>
+						<tr>
+							<td>
+								<form data-ts="Form" >
+									<fieldset>
+										<label>
+											<span>Amount to convert:</span>
+											<input type="text" required >
+											
+										</label>
+									</fieldset>
+								</form>
+							</td>
+							<td style="padding:25px">
+								<button id="convert_button1" data-ts="Button" data-ts.busy="false" data-ts-spirit="ts.dox.LinkSpirit" type="button"
+											class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable2()">
+										<span>CONVERT</span>
+								</button>
+							</td>
+							
+						</tr>
+					</table>
+					
+					<form style="padding:15px">
+						<div id="transactionslist2" data-ts="Table" data-ng-show="showMe2"></div>
+					</form>
+						
 				</article>
 			</div>
 			

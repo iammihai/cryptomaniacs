@@ -2,9 +2,18 @@ var app = angular.module("cryptoApp", []);
 app.controller("myController", function($scope){
 	
 	$scope.showMe = false;
+	$scope.showMe1 = false;
+	$scope.showMe2 = false;
 	$scope.showTable = function(){
 		$scope.showMe = !$scope.showMe;
 	};
+	$scope.showTable1 = function(){
+		$scope.showMe1 = !$scope.showMe1;
+	};
+	$scope.showTable2 = function(){
+		$scope.showMe2 = !$scope.showMe2;
+	};
+
 	
 	$scope.showMe1 = false;
 	$scope.showTable1 = function(){
