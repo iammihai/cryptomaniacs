@@ -69,7 +69,7 @@ public class EthereumController {
 		final Block block = web3j.ethGetBlockByNumber(new DefaultBlockParameterNumber(blockNumber), true).send()
 				.getBlock();
 		return block.getTransactions().stream().map(tr -> (Transaction) tr.get())
-				.filter(t -> t.getFrom().equals(fromAddress)).collect(Collectors.toList());
+				.filter(t -> t.getFrom().equalsIgnoreCase(fromAddress)).collect(Collectors.toList());
 
 	}
 
@@ -78,9 +78,9 @@ public class EthereumController {
 		return "0x" + json.get("address");
 	}
 
-	public EthSendTransaction transact(Wallet fromWallet, final String toAddress,
+	public EthSendTransaction transact(Wallet fromWallet, final String toAddress, final BigInteger gasPrice,
 			final BigInteger gasLimit, final BigInteger value) throws Exception {
-		
+
 		ObjectMapper objectMapper = ObjectMapperFactory.getObjectMapper();
 		WalletFile walletFile = objectMapper.readValue(fromWallet.getDataParsed(), WalletFile.class);
 		Credentials credentials = Credentials
@@ -88,15 +88,14 @@ public class EthereumController {
 		BigInteger senderNonce = web3j
 				.ethGetTransactionCount(credentials.getAddress(), DefaultBlockParameterName.LATEST).send()
 				.getTransactionCount();
-		BigInteger gasPriceNetwork = getNetworkGasPrice().getGasPrice();
-		
-		RawTransaction rawTransaction = RawTransaction.createEtherTransaction(senderNonce, gasPriceNetwork, gasLimit, toAddress, value);
+
+		RawTransaction rawTransaction = RawTransaction.createEtherTransaction(senderNonce, gasPrice, gasLimit,
+				toAddress, value);
 
 		byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
 		String hexValue = Numeric.toHexString(signedMessage);
 
 		return web3j.ethSendRawTransaction(hexValue).send();
-		//return null;
 		// poll for transaction response via
 		// org.web3j.protocol.Web3j.ethGetTransactionReceipt(<txHash>)
 
@@ -107,7 +106,8 @@ public class EthereumController {
 	}
 
 	public String getNonce(final String address) throws IOException {
-		return web3j.ethGetTransactionCount(address, DefaultBlockParameterName.LATEST).send().getTransactionCount().toString();
+		return web3j.ethGetTransactionCount(address, DefaultBlockParameterName.LATEST).send().getTransactionCount()
+				.toString();
 	}
 
 }
