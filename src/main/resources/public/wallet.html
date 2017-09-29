@@ -52,13 +52,44 @@
 				</li>
 			</menu>
 		</div>
-	</aside>	
+	</aside>
 	
 	<main data-ts="Main" data-ts-spirit="ts.ui.MainSpirit" class="ts-main ts-spirit" tabindex="-1">
-		<div data-ts="MainContent">
-			<h1>Wallet Content</h1>
-		</div>
-	</main>
+			<div data-ts="MainContent">
+				<h1>Wallet</h1>
+				
+				 <table>
+                        <tr>
+                            <td style="padding:20px">
+                                <button type="button" class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable1()" >
+									<span>Wallet X</span>
+								</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               <div id="transactionslist3" data-ts="Table" data-ng-show="showMe1"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:20px">
+                               <button type="button" class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable2()">
+									<span>Wallet Y</span>
+								</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="transactionslist4" data-ts="Table" data-ng-show="showMe2" ></div>
+                            </td>
+                        </tr>
+                        
+                   </table>
+								
+			</div>
+		</main>
 	</div>
+	
+	
 </body>		
 </html>
