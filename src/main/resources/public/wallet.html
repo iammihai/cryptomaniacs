@@ -55,32 +55,35 @@
 	</aside>
 	
 	<main data-ts="Main" data-ts-spirit="ts.ui.MainSpirit" class="ts-main ts-spirit" tabindex="-1">
-			<div data-ts="MainContent">
+			<div data-ts="MainContent" data-ts-spirit="ts.ui.MainContentSpirit" class="ts-maincontent ts-spirit" tabindex="-1">
+				<article style="padding:20px;padding-bottom:110px">
 				<h1>Wallet</h1>
 				
 				 <table>
                         <tr>
                             <td style="padding:20px">
-                                <button type="button" class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable1()" >
-									<span>Wallet X</span>
+                                <button type="button" class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable3()" >
+									<span>Wallet 1</span>
 								</button>
+								<h4>Address: 0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a</h4>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                               <div id="transactionslist3" data-ts="Table" data-ng-show="showMe1"></div>
+                               <div id="transactionslist3" data-ts="Table" data-ng-show="showMe3"></div>
                             </td>
                         </tr>
                         <tr>
                             <td style="padding:20px">
-                               <button type="button" class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable2()">
-									<span>Wallet Y</span>
+                               <button type="button" class="ts-primary ts-button ts-spirit ts-ready" data-ng-click="showTable4()">
+									<span>Wallet 2</span>
 								</button>
+								<h4>Address: 0x17473c7E2aFcc56C984287FF7D5A79276894F58D</h4>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div id="transactionslist4" data-ts="Table" data-ng-show="showMe2" ></div>
+                                <div id="transactionslist4" data-ts="Table" data-ng-show="showMe4" ></div>
                             </td>
                         </tr>
                         

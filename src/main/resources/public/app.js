@@ -40,14 +40,14 @@ app.controller("myController", function($scope,$http, dataService){
 	};
 
 	
-	$scope.showMe1 = false;
-	$scope.showTable1 = function(){
-		$scope.showMe1 = !$scope.showMe1;
+	$scope.showMe3 = false;
+	$scope.showTable3 = function(){
+		$scope.showMe3 = !$scope.showMe3;
 	};
 	
-	$scope.showMe2 = false;
-	$scope.showTable2 = function(){
-		$scope.showMe2 = !$scope.showMe2;
+	$scope.showMe4 = false;
+	$scope.showTable4 = function(){
+		$scope.showMe4 = !$scope.showMe4;
 	};
 	
 	$scope.today = new Date();
@@ -76,36 +76,35 @@ app.controller("myController", function($scope,$http, dataService){
 		]);
 	});
 	ts.ui.get('#transactionslist1', table => {
-		table.cols(['One', 'Two', 'Tree']);
+		table.cols(['ETH', 'EUR', 'USD']);
 		table.rows([
-			['A', 'D', 'G'],
-			['B', 'E', 'H'],
-			['C', 'F', 'I']
+			['22', '5360.49', '6271.901']
 		]);
 	});
 	ts.ui.get('#transactionslist2', table => {
-		table.cols(['One', 'Two', 'Tree']);
+		table.cols(['BTC', 'EUR', 'USD']);
 		table.rows([
-			['A', 'D', 'G'],
-			['B', 'E', 'H'],
-			['C', 'F', 'I']
+			['13', '45328.18', '53484.99']
+			
 		]);
 	});
 	ts.ui.get('#transactionslist3', table => {
-		table.cols(['Total ', 'Received', 'Send']);
+		table.cols(['Coin ', 'Value', 'EUR ', 'USD']);
 		table.rows([
-			['4000', '1500', '2500'],
-			['B', 'E', 'H'],
-			['C', 'F', 'I']
+			['Bitcoin', '0.73', '2545.35', '2996.6'],
+			['Ethereum', '1.3', '316.76', '369.9'],
+			['Total', '-', '2862.11', '3366.5']
+		
 		]);
 	});
 	
 	ts.ui.get('#transactionslist4', table => {
-		table.cols(['One', 'Two', 'Tree']);
+		table.cols(['Coin ', 'Value', 'EUR ', 'USD']);
 		table.rows([
-			['A4444', 'D', 'G'],
-			['B', 'E', 'H'],
-			['C', 'F', 'I']
+			['Bitcoin', '0', '0', '0'],
+			['Ethereum', '0', '0', '0'],
+			['Total', '-', '0', '0']
+		
 		]);
 	});
 	
