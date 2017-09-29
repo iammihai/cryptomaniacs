@@ -1,5 +1,13 @@
 var app = angular.module("cryptoApp", []); 
-app.controller("myController", function($scope) {
+app.controller("myController", function($scope){
+	
+	$scope.showMe = false;
+	$scope.showTable = function(){
+		$scope.showMe = !$scope.showMe;
+	};
+	
+	$scope.today = new Date();
+	
 	function changeDate(){
 		var datePicker = ts.ui.DatePicker({
 			onselect: function(newval, oldval) {
@@ -12,50 +20,6 @@ app.controller("myController", function($scope) {
 		});
 		datePicker.open();
 	}
-	
-	function setCurrentDate(){
-		var d = new Date();
-		var day = d.getDate();
-		var month = d.getMonth() + 1;
-		var year = d.getFullYear();
-		
-		if(day<10) {
-		    dd = '0'+ day
-		} 
-
-		if(month<10) {
-			month = '0'+ month
-		}
-		
-		var currentDate = new Date();
-		currentDate = year + '-' + month + '-' + day;
-		return currentDate;
-	}
-	
-	function setFirstDay(){
-		var d = new Date();
-		var day = "01"
-		var month = d.getMonth() + 1;
-		var year = d.getFullYear();
-		
-		if(day<10) {
-		    dd = '0'+ day
-		} 
-
-		if(month<10) {
-			month = '0'+ month
-		}
-		
-		var firstDay = new Date();
-		firstDay = year + '-' + month + '-' + day;
-		return firstDay;
-	}
-	
-	document.getElementById('enddate').value = setCurrentDate();
-	document.getElementById('enddate').setAttribute("max", setCurrentDate());
-	document.getElementById('enddate').setAttribute("min", setCurrentDate());
-	document.getElementById('startdate').value = setFirstDay();
-	document.getElementById('startdate').setAttribute("max", setCurrentDate());
 		
 	ts.ui.get('#transactionslist', table => {
 		table.cols(['One', 'Two', 'Tree']);
@@ -66,10 +30,5 @@ app.controller("myController", function($scope) {
 		]);
 	});
 	
-	function showTable(){
-		document.getElementById('transactionslist').setAttribute("style", "visibility:visible");
-	}
-	
-	document.getElementById('generatetrans_button').onclick = function() {showTable()};
 });
 
