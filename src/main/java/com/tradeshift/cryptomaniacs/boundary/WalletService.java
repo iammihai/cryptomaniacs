@@ -68,8 +68,8 @@ public class WalletService {
 	}
 
 	@GetMapping(path = "/{address}/transactions")
-	public List<Transaction> transactions(@PathVariable String address, @RequestParam(required = false, value = "block") final String blockNumber)
-			throws IOException {
+	public List<Transaction> transactions(@PathVariable String address,
+			@RequestParam(required = false, value = "blockNumber") final String blockNumber) throws IOException {
 
 		if (StringUtils.isNotBlank(blockNumber)) {
 			return ethereumController.getTransactions(address, new BigInteger(blockNumber));
@@ -85,13 +85,19 @@ public class WalletService {
 	}
 
 	@PostMapping(value = "{fromAddress}/transact")
-	public EthSendTransaction transact(@PathVariable("fromAddress") String fromAddress, @RequestParam(value = "toAddress") final String toAddress,
-			@RequestParam(value = "amount") final String amount,@RequestParam(value = "gasLimit") final String gasLimit) throws Exception {
+	public EthSendTransaction transact(@PathVariable("fromAddress") String fromAddress,
+			@RequestParam(value = "toAddress") final String toAddress,
+			@RequestParam(value = "amount") final String amount,
+			@RequestParam(value = "gasLimit") final String gasPrice,
+			@RequestParam(value = "gasLimit") final String gasLimit) throws Exception {
+
 		Wallet from = walletRepository.findByAddress(fromAddress);
-		return ethereumController.transact(from, toAddress, new BigInteger(gasLimit), new BigInteger(amount));
+
+		return ethereumController.transact(from, toAddress, new BigInteger(gasPrice), new BigInteger(gasLimit),
+				new BigInteger(amount));
 
 	}
-	
+
 	@GetMapping(value = "/ethereum/gasPrice")
 	public EthGasPrice getGasPrice() throws IOException {
 		return ethereumController.getNetworkGasPrice();

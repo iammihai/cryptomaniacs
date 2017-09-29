@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeshift.cryptomaniacs.controller.ExchangeController;
+import com.tradeshift.cryptomaniacs.entity.CurrencyExchange;
 
 @RestController
 @RequestMapping(value = "/api/exchange", produces = MediaType.APPLICATION_JSON)
@@ -18,10 +19,10 @@ public class ExchangeService {
 	private ExchangeController exchangeController;
 
 	@RequestMapping(value = "/convert", method = RequestMethod.GET)
-	public Double convert(@QueryParam("currency") String currency, @QueryParam("amount") Double amount)
+	public CurrencyExchange convert(@QueryParam("currency") String currency, @QueryParam("amount") Double amount)
 			throws Exception {
 
-		return exchangeController.convert(currency, amount);
+		return exchangeController.ethereumToCurrency(currency, amount);
 
 	}
 
