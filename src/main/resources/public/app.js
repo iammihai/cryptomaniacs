@@ -67,11 +67,12 @@ app.controller("myController", function($scope,$http, dataService){
 	}
 		
 	ts.ui.get('#transactionslist', table => {
-		table.cols(['One', 'Two', 'Tree']);
+		table.cols(['Hash    ', 'blockNumber    ', 'blockHash    ', 'from    ', 'to    ', 'value (ethereum)   ', 'gas    ', 'gasPrice    ']);
 		table.rows([
-			['A', 'D', 'G'],
-			['B', 'E', 'H'],
-			['C', 'F', 'I']
+			['0x7a83e53cc62ad95dfa6ad1c00ec49214999461d9bbac748e8b5251f1ed2142ea', '4321196', '0x8e7bc14e782fcc6b4836d52c1cf0f2ecdb6e5e615c7f6ef59c128308fba487df', '0xd30848ca6553fc34aa342add28907e1ecef2cb6a', '0x17473c7e2afcc56c984287ff7d5a79276894f58d', '0.0006', '30000', '20000000000'],
+			['0x49214999461d9b62ad95dfa6ad1c00ecbac748e8b5251f1ed2142ea', '9682108', '0x1f59c128308fba48e7bc14e782fcc6b4836d52c1cf0f2ecdb6e5e615c7f687df', '0xd30848ca6553fc34aa342add28907e1ecef2cb6a', '0x17473c7e2afcc56c984287ff7d5a79276894f58d', '0.0004', '20000', '20000000000'],
+			['0x7e8b5251f1ed2142ea214999461d9bbac748e214999461d9bbac748e', '8701156', '0x2ecdb6e5e68e7bc14e782fcc6b4836d52c1cf0f15c7f6ef59c128308fba487df', '0xd30848ca6553fc34aa342add28907e1ecef2cb6a', '0x17473c7e2afcc56c984287ff7d5a79276894f58d', '0.00031316', '15658', '20000000000'],
+			['0x7a83e53cc62ad95dfa6ad1c00ec49214999461d9bbac748e8b5251f', '5834196', '0x8e7bc14e782fcc6b4836d52c1cf0f2ecdb6e5e615c7f6ef59c128308fba487df', '0xd30848ca6553fc34aa342add28907e1ecef2cb6a', '0x87ff7d5a717473c7e2afcc56c98429276894f58d', '0.000696', '34800', '20000000000']
 		]);
 	});
 	ts.ui.get('#transactionslist1', table => {
