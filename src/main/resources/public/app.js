@@ -1,6 +1,31 @@
 var app = angular.module("cryptoApp", []); 
-app.controller("myController", function($scope){
+
+app.service('dataService', function($http) {
 	
+	this.getData = function(method, url) {
+	   $http({
+	        method: method,
+	        url: url
+	     }).then(function(response){
+	         return response.data;
+	    });
+	 };
+});
+
+
+app.controller("myController", function($scope,$http, dataService){
+	
+	$scope.users = [];
+	$scope.getUsers =  function(){
+		$http({
+	        method: 'GET',
+	        url: 'http://localhost:8080/api/user/list'
+	     }).then(function(response){
+	    	 console.log(response.data);
+	    	 $scope.users = response.data;
+	    });
+	}();
+
 	$scope.showMe = false;
 	$scope.showMe1 = false;
 	$scope.showMe2 = false;
@@ -27,6 +52,7 @@ app.controller("myController", function($scope){
 	
 	$scope.today = new Date();
 	
+
 	function changeDate(){
 		var datePicker = ts.ui.DatePicker({
 			onselect: function(newval, oldval) {
@@ -83,4 +109,6 @@ app.controller("myController", function($scope){
 	});
 	
 });
+
+
 

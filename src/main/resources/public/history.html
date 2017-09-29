@@ -56,9 +56,23 @@
 	<main data-ts="Main" data-ts-spirit="ts.ui.MainSpirit" class="ts-main ts-spirit" tabindex="-1">
 		<div data-ts="MainContent">
 		<!-- <div style="height:66px" class="ts-bg-dark"></div> -->
+		<article style="padding-bottom: 154px">
 			<h1>Search for transaction</h1>
 			<form data-ts="Form">
 				<table>
+				<tr> 
+				<td>
+					<fieldset>
+						<label>
+							<span>User:</span>
+							<select>
+								<option data-ng-repeat="user in users"
+								value="{{user}}">{{user.username}}</option>
+							</select>
+						</label>
+					</fieldset>
+				</td>
+				</tr>
 				<tr> 
 				<td>
 					<fieldset>
@@ -122,6 +136,7 @@
 				
 				<div id="transactionslist" data-ts="Table" data-ng-show="showMe"></div>
 			</form>
+			</article>
 		</div>
 	</main>
 	</div>
