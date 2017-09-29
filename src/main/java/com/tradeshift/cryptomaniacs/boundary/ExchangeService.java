@@ -19,10 +19,10 @@ public class ExchangeService {
 	private ExchangeController exchangeController;
 
 	@RequestMapping(value = "/convert", method = RequestMethod.GET)
-	public CurrencyExchange convert(@QueryParam("currency") String currency, @QueryParam("amount") Double amount)
+	public CurrencyExchange convert(@QueryParam("amount") double amount, @QueryParam("currency") String currency)
 			throws Exception {
 
-		return exchangeController.ethereumToCurrency(currency, amount);
+		return exchangeController.ethereumTo(amount, currency);
 
 	}
 

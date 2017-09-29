@@ -8,128 +8,231 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/api/user",
-			"request": {
-				"url": "http://localhost:8080/api/user",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "exchange",
+			"description": "",
+			"item": [
+				{
+					"name": "1 ETH in USD",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/api/exchange/convert?amount=1&currency=usd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"exchange",
+								"convert"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "1",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "currency",
+									"value": "usd",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"firstName\": \"firstname1\",\n    \"lastName\": \"lastname1\",\n    \"username\": \"username1\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "http://localhost:8080/api/user/list",
-			"request": {
-				"url": "http://localhost:8080/api/user/list",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/user/abe",
-			"request": {
-				"url": "http://localhost:8080/api/user/abe",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/user/abe/wallet",
-			"request": {
-				"url": "http://localhost:8080/api/user/abe/wallet",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/wallet/user/abe",
-			"request": {
-				"url": "http://localhost:8080/api/wallet/user/abe",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "users",
+			"description": "",
+			"item": [
+				{
+					"name": "list users",
+					"request": {
+						"url": "http://localhost:8080/api/user/list",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"data\":\"eyJ2ZXJzaW9uIjozLCJpZCI6IjJjOWUyNzFiLTM1OGYtNDY5NC04YmI0LTI0Njk5YjRlYzQ3NSIsImFkZHJlc3MiOiJkMzA4NDhjYTY1NTNmYzM0YWEzNDJhZGQyODkwN2UxZWNlZjJjYjZhIiwiQ3J5cHRvIjp7ImNpcGhlcnRleHQiOiI1YzcwNDk0ZGZiNjhhMWVjZTcyNDVlN2FhM2ZhOWZmNTk4ZjM3OGZiMmVhMjRhMGFjOTY3ZTRhMGRiMDlkNThiIiwiY2lwaGVycGFyYW1zIjp7Iml2IjoiY2IzZGJiZTM0MDI0ZWRmNzk1NDYyMzBmYjg4OGI2MjUifSwiY2lwaGVyIjoiYWVzLTEyOC1jdHIiLCJrZGYiOiJzY3J5cHQiLCJrZGZwYXJhbXMiOnsiZGtsZW4iOjMyLCJzYWx0IjoiNTNkMjYzNDA1ZWE2ZDk4YWIzYjViOTYxYWVlMTZiYWE4NTk5Njc3ODcxYWFlZWFiZDY2ZWRjZDRhZTM4ZWIwMiIsIm4iOjEwMjQsInIiOjgsInAiOjF9LCJtYWMiOiI3YjE2YzY4N2U3ZGMyNTBjZjEwNGY2NTVmZmYzZGE5ZjAxZDk4YjBiZGM4MzIyMGUzMmIwMjFiN2Q0YzM2NzUzIn19\",\n\t\"type\": \"ETHEREUM\",\n\t\"password\": \"cryptomaniacsether1\"\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "create user [x]",
+					"request": {
+						"url": "http://localhost:8080/api/user",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"firstname1\",\n    \"lastName\": \"lastname1\",\n    \"username\": \"username1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Abe user [x]",
+					"request": {
+						"url": "http://localhost:8080/api/user/abe",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "http://localhost:8080/api/wallet/user/abe",
-			"request": {
-				"url": "http://localhost:8080/api/wallet/user/abe",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
+			"name": "others",
+			"description": "",
+			"item": []
 		},
 		{
-			"name": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/ballance",
-			"request": {
-				"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/ballance",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+			"name": "wallets",
+			"description": "",
+			"item": [
+				{
+					"name": "Abe",
+					"description": "",
+					"item": [
+						{
+							"name": "Abe's wallet",
+							"request": {
+								"url": "http://localhost:8080/api/user/abe/wallet",
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Abe's wallet ETH  definition",
+							"request": {
+								"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "Abe's ballance",
+							"request": {
+								"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/ballance",
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "add a new wallet for Abe [x]",
+							"request": {
+								"url": "http://localhost:8080/api/wallet/user/abe",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"data\":\"eyJ2ZXJzaW9uIjozLCJpZCI6IjJjOWUyNzFiLTM1OGYtNDY5NC04YmI0LTI0Njk5YjRlYzQ3NSIsImFkZHJlc3MiOiJkMzA4NDhjYTY1NTNmYzM0YWEzNDJhZGQyODkwN2UxZWNlZjJjYjZhIiwiQ3J5cHRvIjp7ImNpcGhlcnRleHQiOiI1YzcwNDk0ZGZiNjhhMWVjZTcyNDVlN2FhM2ZhOWZmNTk4ZjM3OGZiMmVhMjRhMGFjOTY3ZTRhMGRiMDlkNThiIiwiY2lwaGVycGFyYW1zIjp7Iml2IjoiY2IzZGJiZTM0MDI0ZWRmNzk1NDYyMzBmYjg4OGI2MjUifSwiY2lwaGVyIjoiYWVzLTEyOC1jdHIiLCJrZGYiOiJzY3J5cHQiLCJrZGZwYXJhbXMiOnsiZGtsZW4iOjMyLCJzYWx0IjoiNTNkMjYzNDA1ZWE2ZDk4YWIzYjViOTYxYWVlMTZiYWE4NTk5Njc3ODcxYWFlZWFiZDY2ZWRjZDRhZTM4ZWIwMiIsIm4iOjEwMjQsInIiOjgsInAiOjF9LCJtYWMiOiI3YjE2YzY4N2U3ZGMyNTBjZjEwNGY2NTVmZmYzZGE5ZjAxZDk4YjBiZGM4MzIyMGUzMmIwMjFiN2Q0YzM2NzUzIn19\",\n\t\"type\": \"ETHEREUM\",\n\t\"password\": \"cryptomaniacsether1\"\n}"
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
-			"request": {
-				"url": "http://localhost:8080/api/wallet/0xd30848cA6553fc34aA342adD28907E1ECEF2cb6a/data",
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "George",
+					"description": "",
+					"item": [
+						{
+							"name": "George's wallet",
+							"request": {
+								"url": "http://localhost:8080/api/user/george/wallet",
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "George's wallet ETH  definition",
+							"request": {
+								"url": "http://localhost:8080/api/wallet/0x17473c7E2aFcc56C984287FF7D5A79276894F58D/data",
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "George's ballance",
+							"request": {
+								"url": "http://localhost:8080/api/wallet/0x17473c7E2aFcc56C984287FF7D5A79276894F58D/ballance",
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
 		},
 		{
 			"name": "http://localhost:8080/api/wallet/0x8b8cec1ac92cb3b3bb2a00d394aa9474f91ba05d/transactions?block=4318691",
@@ -177,44 +280,6 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/exchange/convert?currency=usd&amount=1",
-			"request": {
-				"url": {
-					"raw": "http://localhost:8080/api/exchange/convert?currency=usd&amount=1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"exchange",
-						"convert"
-					],
-					"query": [
-						{
-							"key": "currency",
-							"value": "usd",
-							"equals": true,
-							"description": ""
-						},
-						{
-							"key": "amount",
-							"value": "1",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
 				"description": ""
 			},
 			"response": []
