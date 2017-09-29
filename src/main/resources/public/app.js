@@ -91,19 +91,14 @@ app.controller("myController", function($scope,$http, dataService){
 	ts.ui.get('#transactionslist3', table => {
 		table.cols(['Coin ', 'Value', 'EUR ', 'USD']);
 		table.rows([
-			['Bitcoin', '0.73', '2545.35', '2996.6'],
-			['Ethereum', '1.3', '316.76', '369.9'],
-			['Total', '-', '2862.11', '3366.5']
-		
+			['Ethereum', '0.73', '2545.35', '2996.6']
 		]);
 	});
 	
 	ts.ui.get('#transactionslist4', table => {
 		table.cols(['Coin ', 'Value', 'EUR ', 'USD']);
 		table.rows([
-			['Bitcoin', '0', '0', '0'],
-			['Ethereum', '0', '0', '0'],
-			['Total', '-', '0', '0']
+			['Bitcoin', '1.3', '316.76', '369.9']
 		
 		]);
 	});
